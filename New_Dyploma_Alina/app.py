@@ -11,13 +11,13 @@ app = Flask(__name__)
 def welcome():
     """ Эта функция запуская и отвечает за процесс возврата результата welcome.html. """
 
-    return render_template('welcome.html')
+    return render_template('index.html')
 
 
 @app.route("/error")
 def error():
     """Эта функция запуская и отвечает за процесс возврата результата test_error.html."""
-    return render_template('test_error.html')
+    return render_template('index.html')
 
 
 @app.route("/runallure")
@@ -30,20 +30,20 @@ def run_allure():
                           stdin=subprocess.PIPE,
                           universal_newlines=True) as result:
         out = result.communicate()
-    return render_template('welcome.html', text=out, json=out)
+    return render_template('index.html', text=out, json=out)
 
 
 @app.route("/run")
 def run():
     """ Эта функция запуская и отвечает за тесты страницы /example. """
 
-    cmd = ["./scriptsh/run_aut_lk.sh"]
+    cmd = ["./script/api.sh"]
     with subprocess.Popen(cmd, stdout=subprocess.PIPE,
                           stderr=subprocess.PIPE,
                           stdin=subprocess.PIPE,
                           universal_newlines=True) as result:
         out = result.communicate()
-    return render_template('welcome.html', text=out, json=out)
+    return render_template('index.html', text=out, json=out)
 
 
 if __name__ == "__main__":
