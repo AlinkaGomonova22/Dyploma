@@ -47,7 +47,7 @@ def test_api_1():
     with allure.step('Проверка метода'):
         check.equal(response.request.method, 'GET')
 
-    with allure.step('Проверка значений Firstname и phone'):
+    with allure.step('Проверка значений phone'):
         response_phone = response.json()
         for phone in response_phone:
             if 'phone' in [phone] == 375445924276:
@@ -55,7 +55,7 @@ def test_api_1():
             else:
                 print("не тот номер")
 
-    with allure.step('Проверка значений Firstname и phone'):
+    with allure.step('Проверка значений Firstname'):
         response_firstName = response.json()
         for firstName in response_firstName:
             if 'Name' in firstName == "Alina":
